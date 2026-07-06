@@ -1,7 +1,7 @@
-const CACHE = "keyboardpractice-44bc4a42db6a";
+const CACHE = "keyboardpractice-50da2929557f";
 const ASSETS = [
   "index.html",
-  "app.DG-9J4pO.js",
+  "app.Bfv1Ig-c.js",
   "app.Is25GVDb.css",
   "favicon.svg",
   "theme-preboot.js",
