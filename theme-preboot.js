@@ -31,7 +31,7 @@
     if (location.protocol !== "file:") {
       var manifestLink = document.createElement("link");
       manifestLink.rel = "manifest";
-      manifestLink.href = "/manifest.json";
+      manifestLink.href = "./manifest.json";
       document.head.appendChild(manifestLink);
     }
   } catch (_e) {}

@@ -4,6 +4,9 @@ const ASSETS = [
   "app.C-AUKJug.js",
   "app.nn0jI_BB.css",
   "favicon.svg",
+  "theme-preboot.js",
+  "sidebar.js",
+  "design/ka360.png",
   "manifest.json"
 ];
 
