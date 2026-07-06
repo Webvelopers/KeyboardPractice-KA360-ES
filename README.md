@@ -1,7 +1,7 @@
 # KeyboardPractice — Kinesis Advantage 360 — Español
 
-**Versión:** 0.0.x-dev  
-**Teclado:** Kinesis Advantage 360 — Español  
+**Versión:** 0.0.x-dev
+**Teclado:** Kinesis Advantage 360
 **Idioma de la interfaz:** Español
 
 Aplicación web **offline-first** para aprender mecanografía táctil en un teclado **Kinesis Advantage 360** configurado para **Español**. Sin registro, sin backend, sin conexión a Internet: todo el contenido y la lógica se ejecutan localmente en el navegador.
