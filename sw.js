@@ -1,8 +1,8 @@
-const CACHE = "keyboardpractice-362c57202acd";
+const CACHE = "keyboardpractice-f52ebdc51aa4";
 const ASSETS = [
   "index.html",
   "app.BrvLEqGM.js",
-  "app.BZLZgyWb.css",
+  "app.DjKmYj7J.css",
   "favicon.svg",
   "theme-preboot.js",
   "sidebar.js",
