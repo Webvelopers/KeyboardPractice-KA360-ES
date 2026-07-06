@@ -1,0 +1,19 @@
+{
+  "name": "KeyboardPractice - Kinesis Advantage 360",
+  "short_name": "KeyboardPractice",
+  "description": "Practica de mecanografia para Kinesis Advantage 360 en Espanol Latinoamericano.",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#f6f8fb",
+  "theme_color": "#3ccb9a",
+  "orientation": "any",
+  "lang": "es",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
