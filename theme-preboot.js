@@ -46,7 +46,7 @@
     if (location.protocol !== "file:" && !isViteDevServer) {
       var cspMeta = document.createElement("meta");
       cspMeta.httpEquiv = "Content-Security-Policy";
-      cspMeta.content = "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'; form-action 'none'; base-uri 'self'";
+      cspMeta.content = "default-src 'self'; script-src 'self' 'sha256-O5LpBDujzzsDirbZBYVc66qnylYSBjFxBwrPMFoSfgM='; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'; form-action 'none'; base-uri 'self'";
       document.head.appendChild(cspMeta);
     }
   } catch (_e) {}
