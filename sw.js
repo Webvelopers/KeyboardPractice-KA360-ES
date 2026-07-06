@@ -1,8 +1,8 @@
-const CACHE = "keyboardpractice-875a12e06aee";
+const CACHE = "keyboardpractice-ad85cfdf89a5";
 const ASSETS = [
   "index.html",
-  "app.nKcs6Nhn.js",
-  "app.gmKgJkFe.css",
+  "app.CrxuFWY-.js",
+  "app.Is25GVDb.css",
   "favicon.svg",
   "theme-preboot.js",
   "sidebar.js",
@@ -14,7 +14,8 @@ self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(CACHE).then((cache) => cache.addAll(ASSETS))
   );
-  self.skipWaiting();
+  // Do NOT call self.skipWaiting() here — let the new version wait
+  // for user confirmation before activating.
 });
 
 self.addEventListener("activate", (event) => {
@@ -31,4 +32,11 @@ self.addEventListener("fetch", (event) => {
   event.respondWith(
     caches.match(event.request).then((cached) => cached || fetch(event.request))
   );
+});
+
+// Listen for activation request from the page (user clicked "Actualizar").
+self.addEventListener("message", (event) => {
+  if (event.data && event.data.action === "skipWaiting") {
+    self.skipWaiting();
+  }
 });
