@@ -9,7 +9,7 @@
     <title>Español | Latinoamérica</title>
     <script src="./theme-preboot.js"></script>
     <script src="./app.NZeEhz4B.js"></script>
-    <link rel="stylesheet" href="./app.C38tE-L-.css">
+    <link rel="stylesheet" href="./app.DtU1g66m.css">
   </head>
   <body class="min-h-screen bg-kinesis-page text-kinesis-graphite transition-colors dark:bg-kinesis-graphite dark:text-slate-100">
     <a id="app-skip-link" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:text-kinesis-graphite" href="#main-content" hidden>Saltar al contenido principal</a>
@@ -290,30 +290,36 @@
           </div>
         </section>
 
-        <aside id="practice-route-panel" class="practice-route-panel app-panel" aria-label="Ruta, criterios y estado de practica" data-app-section="course" hidden>
-          <div class="route-column">
-            <section class="route-card">
-              <div class="section-panel-header">
-                <div>
-                  <div class="section-status-row">
-                    <button class="sidebar-toggle-button" type="button" aria-label="Abrir navegacion principal" aria-expanded="false" aria-controls="app-sidebar" data-sidebar-toggle>
-                      <span class="sidebar-toggle-icon" aria-hidden="true">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                      </span>
-                    </button>
-                    <p class="section-panel-eyebrow">Curso</p>
-                  </div>
-                  <h2 id="course-title" class="section-panel-title">Cargando curso</h2>
-                  <p class="section-panel-summary">Ruta, criterios y estado de practica.</p>
-                </div>
-                <div class="rounded-2xl bg-kinesis-green/10 px-4 py-3 text-center dark:bg-kinesis-green/15">
-                  <p id="course-progress" class="text-2xl font-black text-kinesis-green-dark dark:text-kinesis-green">0%</p>
-                  <p class="text-xs font-bold uppercase tracking-widest text-kinesis-steel dark:text-kinesis-sky">avance</p>
-                </div>
+        <section id="practice-route-panel" class="practice-route-panel app-panel" aria-labelledby="course-title" aria-describedby="course-summary" data-app-section="course" hidden>
+          <div class="practice-panel-header section-panel-header">
+            <div>
+              <div class="section-status-row">
+                <button class="sidebar-toggle-button" type="button" aria-label="Abrir navegacion principal" aria-expanded="false" aria-controls="app-sidebar" data-sidebar-toggle>
+                  <span class="sidebar-toggle-icon" aria-hidden="true">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </span>
+                </button>
+                <p class="section-panel-eyebrow">Curso</p>
               </div>
-              <div id="lesson-list" class="mt-5" aria-label="Selector de practicas del curso"></div>
+              <h2 id="course-title" class="section-panel-title">Cargando curso</h2>
+              <p id="course-summary" class="section-panel-summary">Ruta, criterios y estado de practica.</p>
+            </div>
+            <div class="rounded-2xl bg-kinesis-green/10 px-4 py-3 text-center dark:bg-kinesis-green/15">
+              <p id="course-progress" class="text-2xl font-black text-kinesis-green-dark dark:text-kinesis-green">0%</p>
+              <p class="text-xs font-bold uppercase tracking-widest text-kinesis-steel dark:text-kinesis-sky">avance</p>
+            </div>
+          </div>
+
+          <div class="practice-route-body">
+            <section class="route-card" aria-label="Selector de practicas del curso">
+              <div id="lesson-list" aria-label="Selector de practicas del curso"></div>
+            </section>
+
+            <section class="route-card">
+              <h3 class="text-sm font-black uppercase tracking-[0.18em] text-kinesis-steel dark:text-kinesis-sky">Evaluacion</h3>
+              <div id="criteria-list" class="mt-4 grid gap-3"></div>
             </section>
 
             <section class="route-card">
@@ -341,15 +347,9 @@
                 <li><strong>Atajos:</strong> usa Alt+K en Windows/Linux o ⌘+K en macOS para iniciar, Esc para finalizar, Alt+H/⌘+H para avanzar y Enter/⏎ para cerrar mensajes emergentes.</li>
               </ol>
             </section>
-          </div>
 
-          <div class="route-column">
-            <section class="route-card">
-              <h3 class="text-sm font-black uppercase tracking-[0.18em] text-kinesis-steel dark:text-kinesis-sky">Evaluacion</h3>
-              <div id="criteria-list" class="mt-4 grid gap-3"></div>
-            </section>
           </div>
-        </aside>
+        </section>
 
         <section id="stats-panel" class="stats-panel app-panel" aria-labelledby="stats-title" data-app-section="stats" hidden>
           <div class="stats-panel-header section-panel-header">
