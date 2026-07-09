@@ -1,9 +1,10 @@
 /**
  * Theme pre-boot script for KeyboardPractice.
  *
- * Runs synchronously before the page renders to prevent FOUC (Flash of
- * Unstyled Content). Reads the user's theme preference from LocalStorage
- * and applies it to <html> before the browser paints.
+ * Runs synchronously before the page renders to prevent a bright/dark mismatch.
+ * ADR-013 keeps user settings inside the encrypted store, so the preboot script
+ * must not read application LocalStorage. The saved theme is applied after the
+ * user unlocks the app.
  *
  * Also loads the PWA manifest link (skipped on file:// protocol due to
  * CORS restrictions on null origins).
@@ -13,11 +14,10 @@
  */
 (function () {
   try {
-    var settings = JSON.parse(localStorage.getItem("kp.userSettings") || "{}");
-    var storedTheme = ["light", "dark", "system"].indexOf(settings.theme) !== -1 ? settings.theme : "system";
-    var theme = storedTheme === "system" && window.matchMedia
+    var storedTheme = "system";
+    var theme = window.matchMedia
       ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")
-      : storedTheme === "dark" ? "dark" : "light";
+      : "light";
     document.documentElement.dataset.theme = theme;
     document.documentElement.dataset.themeSetting = storedTheme;
   } catch (_error) {
