@@ -1,3 +1,11 @@
+/**
+ * @fileoverview Service Worker — offline cache for KeyboardPractice.
+ *
+ * Implements cache-first fetch strategy for static assets, versioned caching
+ * with old-cache cleanup on activation, and user-confirmation-based activation
+ * via skipWaiting message handling.
+ */
+
 const CACHE = "keyboardpractice-d3529de9dff4";
 const ASSETS = [
   "index.html",

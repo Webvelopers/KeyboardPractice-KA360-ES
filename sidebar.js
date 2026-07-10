@@ -6,6 +6,14 @@
  * attribute) to avoid cascade conflicts. Coordinates with app.js via
  * event.__sidebarHandled.
  */
+/**
+ * @fileoverview Sidebar preboot — synchronous navigation toggle for initial render.
+ *
+ * Inline script executed before the app shell is fully loaded. Provides an
+ * immediate, framework-independent sidebar toggle to prevent FOUC during
+ * boot. Uses event delegation and CSS class toggling via __sidebarHandled
+ * to coordinate with the full app-shell controller.
+ */
 (function () {
   "use strict";
 

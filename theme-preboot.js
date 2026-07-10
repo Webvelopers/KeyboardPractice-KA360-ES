@@ -12,6 +12,14 @@
  * CSP note: This file is loaded via <script src="..."> from index.html
  * so it complies with script-src 'self'.
  */
+/**
+ * @fileoverview Theme preboot — synchronous theme application before first paint.
+ *
+ * Applies the preferred theme (system or stored) synchronously to prevent
+ * flash of unstyled content (FOUC) during initial page load. Also loads
+ * the PWA manifest (skipped on file:// protocol) and injects CSP meta tags
+ * for security (skipped on file:// and Vite dev server).
+ */
 (function () {
   try {
     var storedTheme = "system";
