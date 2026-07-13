@@ -6,10 +6,10 @@
  * via skipWaiting message handling.
  */
 
-const CACHE = "keyboardpractice-d7929555af68";
+const CACHE = "keyboardpractice-e0a454b8e2de";
 const ASSETS = [
   "index.html",
-  "app.B7NetJ8C.js",
+  "app.CrvWreBX.js",
   "app.DnI9MCbC.css",
   "favicon.svg",
   "theme-preboot.js",
