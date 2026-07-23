@@ -8,8 +8,8 @@
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <title>Español | Latinoamérica</title>
     <script src="./theme-preboot.js"></script>
-    <script src="./app.0ttdbN1G.js"></script>
-    <link rel="stylesheet" href="./app.BaWsdBUE.css">
+    <script src="./app.BJAW8Wn9.js"></script>
+    <link rel="stylesheet" href="./app.D2wuuGvA.css">
   </head>
   <body class="min-h-screen bg-kinesis-page text-kinesis-graphite transition-colors dark:bg-kinesis-graphite dark:text-slate-100">
     <a id="app-skip-link" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:text-kinesis-graphite" href="#main-content" hidden>Saltar al contenido principal</a>
@@ -152,21 +152,19 @@
                 <div class="mb-3 flex items-center justify-between gap-3">
                   <h3 class="text-sm font-black uppercase tracking-[0.18em] text-kinesis-steel dark:text-kinesis-sky">Texto a dominar</h3>
                 </div>
-                <div class="lesson-line-progress mb-3" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Progreso de linea actual">
-                  <span id="line-progress-fill" class="lesson-line-progress-fill"></span>
-                  <span id="metric-progress" class="lesson-line-progress-label">Linea 1/1 - 0% completo</span>
+                <div class="lesson-line-progress-stage">
+                  <div class="lesson-line-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Progreso de linea actual">
+                    <span id="line-progress-fill" class="lesson-line-progress-fill"></span>
+                    <span id="metric-progress" class="lesson-line-progress-label">Linea 1/1 - 0% completo</span>
+                  </div>
+                  <div id="line-combo-feedback" class="line-combo-feedback" role="status" aria-live="polite" aria-atomic="true" hidden></div>
                 </div>
-                <div id="exercise-target" class="target-text" aria-live="polite"></div>
-                <label class="mt-4 block">
-                  <span class="mb-3 block text-sm font-black uppercase tracking-[0.18em] text-kinesis-steel dark:text-kinesis-sky">Escribe aqui</span>
-                  <textarea id="typing-input" class="min-h-20 w-full resize-none overflow-x-auto rounded-2xl border border-kinesis-mist bg-white p-5 font-mono text-2xl leading-10 text-kinesis-graphite outline-none transition focus:border-kinesis-green focus:ring-4 focus:ring-kinesis-green/25 disabled:cursor-not-allowed disabled:bg-kinesis-cloud dark:border-kinesis-steel dark:bg-kinesis-graphite dark:text-slate-100 dark:focus:ring-kinesis-green/25 dark:disabled:bg-kinesis-steel/40" rows="1" wrap="off" spellcheck="false" autocomplete="off" autocapitalize="off" autocorrect="off" data-form-type="other" disabled></textarea>
-                </label>
+                <p id="exercise-target-instructions" class="sr-only">Area de practica. Pulsa Empezar entrenamiento y escribe el texto mostrado. Enter confirma lineas no finales; Tab sale del area.</p>
+                <div id="exercise-target" class="target-text" role="region" tabindex="0" aria-label="Texto objetivo de practica. Escribe las teclas indicadas." aria-describedby="exercise-target-instructions feedback metric-progress"></div>
               </div>
 
-            </div>
-
-            <div id="keyboard-slot" class="practice-keyboard-row">
-              <article id="keyboard-card" class="side-card">
+              <div id="keyboard-slot" class="practice-keyboard-row">
+                <article id="keyboard-card" class="side-card">
                 <div class="flex items-center justify-between gap-3">
                   <h3 class="text-sm font-black uppercase tracking-[0.18em] text-kinesis-steel dark:text-kinesis-sky">Teclado KA360</h3>
                   <p id="active-key-label" class="text-xs font-black uppercase tracking-[0.16em] text-kinesis-green-dark dark:text-kinesis-green">Sin tecla</p>
@@ -285,7 +283,8 @@
                     </div>
                   </div>
                 </div>
-              </article>
+                </article>
+              </div>
             </div>
           </div>
         </section>
@@ -340,7 +339,7 @@
             <section class="route-card">
               <p class="text-sm font-bold uppercase tracking-[0.2em] text-kinesis-blue dark:text-kinesis-sky">Como funciona</p>
               <ol class="mt-4 space-y-3 text-sm leading-6 text-kinesis-nav dark:text-slate-300">
-                <li><strong>Empezar entrenamiento:</strong> activa el campo de escritura, reinicia el temporizador y bloquea cambios de leccion.</li>
+                <li><strong>Empezar entrenamiento:</strong> enfoca el area de practica, reinicia el temporizador y bloquea cambios de leccion.</li>
                 <li><strong>Finalizar intento:</strong> guarda metricas, evalua precision, PPM, errores y tiempo maximo objetivo.</li>
                 <li><strong>Repetir:</strong> borra el intento actual o prepara una nueva repeticion sin cambiar el progreso aprobado.</li>
                 <li><strong>Siguiente leccion:</strong> aparece habilitado solo cuando la proxima leccion fue desbloqueada.</li>
