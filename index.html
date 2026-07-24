@@ -8,11 +8,65 @@
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <title>Español | Latinoamérica</title>
     <script src="./theme-preboot.js"></script>
-    <script src="./app.BJAW8Wn9.js"></script>
-    <link rel="stylesheet" href="./app.D2wuuGvA.css">
+    <style>
+      /* Critical inline CSS for welcome screen — prevents FOUC before app.css loads via JS module */
+      .app-preloader{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:#f6f8fb;font-family:Inter,ui-sans-serif,system-ui,sans-serif}
+      [data-theme="dark"] .app-preloader{background:#1a1a1a}
+      .app-preloader-content{display:flex;flex-direction:column;align-items:center;gap:1.5rem}
+      .app-preloader-spinner{width:2.5rem;height:2.5rem;border:4px solid rgba(60,203,154,0.2);border-top-color:#3ccb9a;border-radius:50%;animation:app-preloader-spin .8s linear infinite}
+      @keyframes app-preloader-spin{to{transform:rotate(360deg)}}
+      .app-preloader-brand{font-size:1.25rem;font-weight:900;color:#282828;letter-spacing:-0.02em}
+      [data-theme="dark"] .app-preloader-brand{color:#f1f5f9}
+      .app-preloader-status{font-size:.875rem;color:#64748b}
+      [data-theme="dark"] .app-preloader-status{color:#94a3b8}
+      .welcome-screen{position:fixed;inset:0;z-index:85;display:flex;align-items:center;justify-content:center;overflow-y:auto;color:#282828;font-family:Inter,ui-sans-serif,system-ui,sans-serif;background:linear-gradient(160deg,#f6f8fb 0%,#e8edf2 40%,#edf0f3 100%)}
+      [data-theme="dark"] .welcome-screen{color:#f1f5f9;background:linear-gradient(160deg,#1a1a1a 0%,#282828 40%,#292929 100%)}
+      .welcome-screen::after{content:"";pointer-events:none;position:fixed;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(246,248,251,0.78) 0%,rgba(237,240,243,0.65) 50%,rgba(237,240,243,0.82) 100%)}
+      [data-theme="dark"] .welcome-screen::after{background:linear-gradient(to bottom,rgba(26,26,26,0.78) 0%,rgba(40,40,40,0.65) 50%,rgba(41,41,41,0.82) 100%)}
+      .welcome-visual-card{pointer-events:none;position:fixed;inset:0;z-index:0;margin:0;overflow:hidden;padding:6vh 4vw}
+      .welcome-keyboard-image{height:100%;width:100%;-o-object-fit:contain;object-fit:contain;-o-object-position:center;object-position:center;opacity:0.25}
+      [data-theme="dark"] .welcome-keyboard-image{opacity:0.18}
+      .welcome-card{position:relative;z-index:2;display:flex;width:100%;max-width:56rem;flex-direction:column;align-items:center;gap:2rem;padding:3rem 1rem}
+      .welcome-copy{display:flex;flex-direction:column;align-items:center;text-align:center;max-width:36rem}
+      .welcome-start-button{display:inline-flex;align-items:center;justify-content:center;border-radius:9999px;background-color:#3ccb9a;padding:1rem 3rem;font-size:1.125rem;font-weight:900;color:#282828;border:none;cursor:pointer}
+    </style>
+    <script src="./app.BQMQYsGc.js"></script>
+    <link rel="stylesheet" href="./app.YJVend7s.css">
   </head>
-  <body class="min-h-screen bg-kinesis-page text-kinesis-graphite transition-colors dark:bg-kinesis-graphite dark:text-slate-100">
+<body class="min-h-screen bg-kinesis-page text-kinesis-graphite transition-colors dark:bg-kinesis-graphite dark:text-slate-100">
     <a id="app-skip-link" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:text-kinesis-graphite" href="#main-content" hidden>Saltar al contenido principal</a>
+
+    <!-- Pre-loader: visible immediately while CSS, JS, and images load -->
+    <div id="app-preloader" class="app-preloader" aria-label="Cargando KeyboardPractice">
+      <div class="app-preloader-content">
+        <div class="app-preloader-spinner" aria-hidden="true"></div>
+        <p class="app-preloader-brand">KeyboardPractice</p>
+        <p class="app-preloader-status" role="status">Preparando...</p>
+      </div>
+    </div>
+
+<div id="welcome-screen" class="welcome-screen" role="dialog" aria-modal="true" aria-labelledby="welcome-title" aria-describedby="welcome-description welcome-security-note" hidden>
+      <figure class="welcome-visual-card" aria-hidden="true">
+        <img class="welcome-keyboard-image" src="./design/ka360.png" alt="" aria-hidden="true" />
+      </figure>
+      <section class="welcome-card" aria-label="Bienvenida a KeyboardPractice">
+        <div class="welcome-copy">
+          <p class="welcome-eyebrow">KeyboardPractice</p>
+          <h1 id="welcome-title" class="welcome-title">Entrena mecanografia en tu Kinesis Advantage 360.</h1>
+          <p id="welcome-description" class="welcome-description">Practica el teclado en espanol latino con una experiencia local, progresiva y preparada para funcionar sin conexion.</p>
+
+          <ul class="welcome-feature-list" aria-label="Resumen de beneficios">
+            <li><span aria-hidden="true">✓</span><span>Tu progreso permanece cifrado en este navegador.</span></li>
+            <li><span aria-hidden="true">✓</span><span>Los ejercicios se adaptan a tu avance sin depender de servicios externos.</span></li>
+            <li><span aria-hidden="true">✓</span><span>La practica continua disponible aun cuando no tengas conexion.</span></li>
+          </ul>
+
+          <p id="welcome-security-note" class="welcome-security-note">Al iniciar, continuaremos con la frase de seguridad local para configurar o desbloquear tus datos. Esta pantalla no omite ese paso.</p>
+          <button id="welcome-start-button" class="welcome-start-button" type="button" aria-describedby="welcome-security-note">Iniciar</button>
+          <p id="welcome-status" class="sr-only" role="status" aria-live="polite">Pantalla de bienvenida lista. El boton Iniciar abre el flujo protegido de KeyboardPractice.</p>
+        </div>
+      </section>
+    </div>
 
     <div id="app-loader" class="app-loader" data-progress="5" aria-labelledby="app-loader-title" aria-describedby="app-loader-status app-loader-phase" hidden>
       <section class="app-loader-card" aria-label="Estado de carga inicial">
