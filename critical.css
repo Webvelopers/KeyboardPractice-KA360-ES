@@ -1,0 +1,24 @@
+/*
+ * Critical inline CSS for welcome screen — prevents FOUC before app.css loads via JS module.
+ * Loaded as an external stylesheet to comply with the strict CSP (style-src 'self').
+ * NOTE: changes here MUST be reflected in scripts/update-sw-cache.js ASSETS list.
+ */
+.app-preloader{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:#f6f8fb;font-family:Inter,ui-sans-serif,system-ui,sans-serif}
+[data-theme="dark"] .app-preloader{background:#1a1a1a}
+.app-preloader-content{display:flex;flex-direction:column;align-items:center;gap:1.5rem}
+.app-preloader-spinner{width:2.5rem;height:2.5rem;border:4px solid rgba(60,203,154,0.2);border-top-color:#3ccb9a;border-radius:50%;animation:app-preloader-spin .8s linear infinite}
+@keyframes app-preloader-spin{to{transform:rotate(360deg)}}
+.app-preloader-brand{font-size:1.25rem;font-weight:900;color:#282828;letter-spacing:-0.02em}
+[data-theme="dark"] .app-preloader-brand{color:#f1f5f9}
+.app-preloader-status{font-size:.875rem;color:#64748b}
+[data-theme="dark"] .app-preloader-status{color:#94a3b8}
+.welcome-screen{position:fixed;inset:0;z-index:85;display:flex;align-items:center;justify-content:center;overflow-y:auto;color:#282828;font-family:Inter,ui-sans-serif,system-ui,sans-serif;background:linear-gradient(160deg,#f6f8fb 0%,#e8edf2 40%,#edf0f3 100%)}
+[data-theme="dark"] .welcome-screen{color:#f1f5f9;background:linear-gradient(160deg,#1a1a1a 0%,#282828 40%,#292929 100%)}
+.welcome-screen::after{content:"";pointer-events:none;position:fixed;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(246,248,251,0.78) 0%,rgba(237,240,243,0.65) 50%,rgba(237,240,243,0.82) 100%)}
+[data-theme="dark"] .welcome-screen::after{background:linear-gradient(to bottom,rgba(26,26,26,0.78) 0%,rgba(40,40,40,0.65) 50%,rgba(41,41,41,0.82) 100%)}
+.welcome-visual-card{pointer-events:none;position:fixed;inset:0;z-index:0;margin:0;overflow:hidden;padding:6vh 4vw}
+.welcome-keyboard-image{height:100%;width:100%;object-fit:contain;object-position:center;opacity:0.25}
+[data-theme="dark"] .welcome-keyboard-image{opacity:0.18}
+.welcome-card{position:relative;z-index:2;display:flex;width:100%;max-width:56rem;flex-direction:column;align-items:center;gap:2rem;padding:3rem 1rem}
+.welcome-copy{display:flex;flex-direction:column;align-items:center;text-align:center;max-width:36rem}
+.welcome-start-button{display:inline-flex;align-items:center;justify-content:center;border-radius:9999px;background-color:#3ccb9a;padding:1rem 3rem;font-size:1.125rem;font-weight:900;color:#282828;border:none;cursor:pointer}
