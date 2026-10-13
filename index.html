@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="es" data-theme="light">
   <head>
+    <meta http-equiv="Content-Security-Policy" content="default-src &#39;self&#39;; script-src &#39;self&#39;; style-src &#39;self&#39;; img-src &#39;self&#39;; font-src &#39;self&#39;; connect-src &#39;self&#39;; worker-src &#39;self&#39;; manifest-src &#39;self&#39;; object-src &#39;none&#39;; base-uri &#39;self&#39;; form-action &#39;none&#39;; require-trusted-types-for &#39;script&#39;; trusted-types keyboardpractice-sw">
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Practica mecanografia en un teclado Kinesis Advantage 360 configurado en Espanol Latinoamericano." />
@@ -9,8 +11,8 @@
     <title>Español | Latinoamérica</title>
     <script src="./theme-preboot.js"></script>
     <link rel="stylesheet" href="./critical.css" />
-    <script src="./app.Cn1dB0j4.js"></script>
-    <link rel="stylesheet" href="./app.RT_Ul2F6.css">
+    <script type="module" crossorigin src="./app.CH0j06iz.js"></script>
+    <link rel="stylesheet" crossorigin href="./app.B5xPck9e.css">
   </head>
 <body class="min-h-screen bg-kinesis-page text-kinesis-graphite transition-colors dark:bg-kinesis-graphite dark:text-slate-100">
     <a id="app-skip-link" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:text-kinesis-graphite" href="#main-content" hidden>Saltar al contenido principal</a>
@@ -75,14 +77,27 @@
 
     <div class="app-shell" hidden>
       <header class="app-header">
+        <div class="app-navigation-row">
+          <p class="app-brand-mark">
+            <img class="app-brand-icon" src="./favicon.svg" alt="" aria-hidden="true" />
+            <span>KeyboardPractice</span>
+          </p>
+          <button id="sidebar-toggle" class="sidebar-toggle-button" type="button" aria-label="Abrir navegación principal" aria-expanded="false" aria-controls="app-sidebar">
+            <span class="sidebar-toggle-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+            <span>Navegación</span>
+          </button>
+        </div>
+        <div id="header-navigation">
+          <div id="app-sidebar" class="app-sidebar" hidden aria-hidden="true">
+            <div class="app-sidebar-header">
+              <p class="app-sidebar-eyebrow">KeyboardPractice</p>
+              <h2 class="app-sidebar-title">Navegación</h2>
+            </div>
+            <nav id="sidebar-nav" class="sidebar-nav" aria-label="Navegación principal"></nav>
+          </div>
+        </div>
         <div class="app-header-grid">
           <div class="app-header-copy">
-            <div class="app-brand-row">
-              <p class="app-brand-mark">
-                <img class="app-brand-icon" src="./favicon.svg" alt="" aria-hidden="true" />
-                <span>KeyboardPractice</span>
-              </p>
-            </div>
             <h1 class="app-title">Domina tu Kinesis Advantage 360 tecla por tecla.</h1>
             <p class="app-subtitle">Entrena mecanografia en espanol latino con ejercicios progresivos, metricas en tiempo real y practica sin conexion.</p>
             <p id="storage-warning" class="mt-3 hidden rounded-2xl border border-kinesis-blue bg-kinesis-cloud p-3 text-sm font-semibold text-kinesis-steel" role="status"></p>
@@ -94,23 +109,7 @@
       </header>
 
       <div class="app-layout">
-        <div id="sidebar-scrim" class="app-sidebar-scrim"></div>
-        <aside id="app-sidebar" class="app-sidebar" aria-hidden="true">
-          <div class="app-sidebar-header">
-            <div>
-              <p class="app-sidebar-eyebrow">KeyboardPractice</p>
-              <h2 class="app-sidebar-title">Navegacion</h2>
-            </div>
-            <button id="sidebar-close" class="app-sidebar-close" type="button" aria-label="Cerrar navegacion principal">
-              <span class="sidebar-toggle-icon" aria-hidden="true">
-                <span></span>
-                <span></span>
-                <span></span>
-              </span>
-            </button>
-          </div>
-          <nav id="sidebar-nav" class="sidebar-nav" aria-label="Navegacion principal"></nav>
-        </aside>
+        <aside id="desktop-navigation" class="app-desktop-navigation" hidden aria-label="Navegación"></aside>
 
         <main id="main-content" class="app-main" tabindex="-1" data-active-section="practice">
           <p id="app-section-announcer" class="sr-only" aria-live="polite"></p>
@@ -118,13 +117,6 @@
           <div class="practice-panel-header">
             <div class="practice-title-block">
               <div class="practice-status-row">
-                <button id="sidebar-toggle" class="sidebar-toggle-button" type="button" aria-label="Abrir navegacion principal" aria-expanded="false" aria-controls="app-sidebar">
-                  <span class="sidebar-toggle-icon" aria-hidden="true">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                  </span>
-                </button>
                 <p id="lesson-state" class="practice-panel-eyebrow">Tu reto actual</p>
               </div>
               <h2 id="active-lesson-title" class="practice-panel-title">Cargando</h2>
@@ -148,7 +140,7 @@
               </div>
               <div class="summary-meta-grid" aria-label="Resumen de la practica activa">
                 <div><span class="summary-meta-label">Teclas foco</span><div id="summary-keys" class="summary-focus-keyboard" aria-label="Teclado virtual con teclas foco activas"></div></div>
-                <div class="flex flex-col items-center justify-center rounded-2xl bg-gradient-to-br from-kinesis-green/10 to-kinesis-green/5 px-3 py-4 text-center dark:from-kinesis-green/15 dark:to-kinesis-green/5">
+                <div class="flex flex-col items-center justify-center bg-linear-to-br/srgb from-kinesis-green/10 to-kinesis-green/5 text-center dark:from-kinesis-green/15 dark:to-kinesis-green/5">
                   <p id="summary-progress" class="text-[clamp(1.5rem,3.5vw,2.5rem)] font-black leading-none text-kinesis-green-dark dark:text-kinesis-green">0%</p>
                   <p class="mt-1.5 text-[0.6rem] font-black uppercase tracking-[0.2em] text-kinesis-steel dark:text-kinesis-sky">Avance</p>
                 </div>
@@ -327,13 +319,6 @@
           <div class="practice-panel-header section-panel-header">
             <div>
               <div class="section-status-row">
-                <button class="sidebar-toggle-button" type="button" aria-label="Abrir navegacion principal" aria-expanded="false" aria-controls="app-sidebar" data-sidebar-toggle>
-                  <span class="sidebar-toggle-icon" aria-hidden="true">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                  </span>
-                </button>
                 <p class="section-panel-eyebrow">Curso</p>
               </div>
               <h2 id="course-title" class="section-panel-title">Cargando curso</h2>
@@ -388,13 +373,6 @@
           <div class="stats-panel-header section-panel-header">
             <div>
               <div class="section-status-row">
-                <button class="sidebar-toggle-button" type="button" aria-label="Abrir navegacion principal" aria-expanded="false" aria-controls="app-sidebar" data-sidebar-toggle>
-                  <span class="sidebar-toggle-icon" aria-hidden="true">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                  </span>
-                </button>
                 <p class="stats-panel-eyebrow section-panel-eyebrow">Progreso acumulado</p>
               </div>
               <h2 id="stats-title" class="stats-panel-title section-panel-title">Tu progreso</h2>

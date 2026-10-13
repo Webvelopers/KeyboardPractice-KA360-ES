@@ -2,7 +2,11 @@
  * Critical inline CSS for welcome screen — prevents FOUC before app.css loads via JS module.
  * Loaded as an external stylesheet to comply with the strict CSP (style-src 'self').
  * NOTE: changes here MUST be reflected in scripts/update-sw-cache.js ASSETS list.
+ *
+ * Wrapped in @layer base so app.css (Tailwind 4 layers) still overrides it
+ * once loaded; unlayered rules would beat every Tailwind layer.
  */
+@layer base {
 .app-preloader{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:#f6f8fb;font-family:Inter,ui-sans-serif,system-ui,sans-serif}
 [data-theme="dark"] .app-preloader{background:#1a1a1a}
 .app-preloader-content{display:flex;flex-direction:column;align-items:center;gap:1.5rem}
@@ -22,3 +26,6 @@
 .welcome-card{position:relative;z-index:2;display:flex;width:100%;max-width:56rem;flex-direction:column;align-items:center;gap:2rem;padding:3rem 1rem}
 .welcome-copy{display:flex;flex-direction:column;align-items:center;text-align:center;max-width:36rem}
 .welcome-start-button{display:inline-flex;align-items:center;justify-content:center;border-radius:9999px;background-color:#3ccb9a;padding:1rem 3rem;font-size:1.125rem;font-weight:900;color:#282828;border:none;cursor:pointer}
+/* SEC-010: never render inside a frame (clickjacking); set by theme-preboot.js */
+html[data-framed="true"]{display:none!important}
+}

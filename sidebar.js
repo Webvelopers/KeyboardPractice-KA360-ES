@@ -1,64 +1,22 @@
 /**
- * Sidebar toggle for KeyboardPractice.
- *
- * Executes synchronously at end of <body>, independent of ES module loading,
- * HMR, and Service Worker cache. Uses CSS class toggle only (no hidden
- * attribute) to avoid cascade conflicts. Coordinates with app.js via
- * event.__sidebarHandled.
- */
-/**
- * @fileoverview Sidebar preboot — synchronous navigation toggle for initial render.
- *
- * Inline script executed before the app shell is fully loaded. Provides an
- * immediate, framework-independent sidebar toggle to prevent FOUC during
- * boot. Uses event delegation and CSS class toggling via __sidebarHandled
- * to coordinate with the full app-shell controller.
+ * @fileoverview External preboot script for the compact header disclosure.
+ * The application shell takes ownership after initialization. Desktop
+ * navigation is permanent; this early handler can never collapse it.
  */
 (function () {
   "use strict";
-
-  function isWide() {
-    return typeof window !== "undefined" && typeof window.matchMedia === "function"
-      ? window.matchMedia("(min-width: 1024px)").matches
-      : false;
-  }
-
-  function getToggleButtons() {
-    return Array.prototype.slice.call(
-      document.querySelectorAll("#sidebar-toggle, [data-sidebar-toggle]")
-    );
-  }
-
-  function syncToggleButtons(nowOpen) {
-    getToggleButtons().forEach(function (toggleBtn) {
-      toggleBtn.setAttribute("aria-expanded", String(nowOpen));
-      toggleBtn.setAttribute(
-        "aria-label",
-        nowOpen ? "Cerrar navegacion principal" : "Abrir navegacion principal"
-      );
-    });
-  }
-
-  function toggle(target) {
+  document.addEventListener("click", function (event) {
     var sidebar = document.getElementById("app-sidebar");
-    var scrim = document.getElementById("sidebar-scrim");
-    if (!sidebar || getToggleButtons().length === 0) return;
-
-    var nowOpen = !sidebar.classList.contains("is-open");
-
-    sidebar.classList.toggle("is-open", nowOpen);
-    if (scrim && !isWide()) scrim.classList.toggle("is-open", nowOpen);
-    if (document.body) document.body.classList.toggle("is-sidebar-open", nowOpen);
-    syncToggleButtons(nowOpen);
-    sidebar.setAttribute("aria-hidden", String(!nowOpen));
-  }
-
-  document.addEventListener("click", function (e) {
-    if (e.__sidebarHandled) return;
-    var btn = e.target.closest("#sidebar-toggle, [data-sidebar-toggle]");
-    if (!btn) return;
-    e.preventDefault();
-    toggle(btn);
-    e.__sidebarHandled = true;
+    if (event.__sidebarHandled || !sidebar || sidebar.dataset.navigationOwner === "shell") return;
+    var toggle = event.target.closest && event.target.closest("#sidebar-toggle");
+    if (!toggle || window.matchMedia("(min-width: 1280px)").matches) return;
+    event.preventDefault();
+    var open = sidebar.hidden;
+    sidebar.hidden = !open;
+    sidebar.classList.toggle("is-open", open);
+    sidebar.setAttribute("aria-hidden", String(!open));
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Cerrar navegación principal" : "Abrir navegación principal");
+    event.__sidebarHandled = true;
   });
 })();
