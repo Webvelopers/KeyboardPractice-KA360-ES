@@ -7,8 +7,8 @@
  * once loaded; unlayered rules would beat every Tailwind layer.
  */
 @layer base {
-.app-preloader{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:#f6f8fb;font-family:Inter,ui-sans-serif,system-ui,sans-serif}
-[data-theme="dark"] .app-preloader{background:#1a1a1a}
+.app-preloader{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:#f2f2f7;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI Variable Text","Segoe UI",system-ui,sans-serif}
+[data-theme="dark"] .app-preloader{background:#000000}
 .app-preloader-content{display:flex;flex-direction:column;align-items:center;gap:1.5rem}
 .app-preloader-spinner{width:2.5rem;height:2.5rem;border:4px solid rgba(60,203,154,0.2);border-top-color:#3ccb9a;border-radius:50%;animation:app-preloader-spin .8s linear infinite}
 @keyframes app-preloader-spin{to{transform:rotate(360deg)}}
@@ -16,16 +16,26 @@
 [data-theme="dark"] .app-preloader-brand{color:#f1f5f9}
 .app-preloader-status{font-size:.875rem;color:#64748b}
 [data-theme="dark"] .app-preloader-status{color:#94a3b8}
-.welcome-screen{position:fixed;inset:0;z-index:85;display:flex;align-items:center;justify-content:center;overflow-y:auto;color:#282828;font-family:Inter,ui-sans-serif,system-ui,sans-serif;background:linear-gradient(160deg,#f6f8fb 0%,#e8edf2 40%,#edf0f3 100%)}
-[data-theme="dark"] .welcome-screen{color:#f1f5f9;background:linear-gradient(160deg,#1a1a1a 0%,#282828 40%,#292929 100%)}
-.welcome-screen::after{content:"";pointer-events:none;position:fixed;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(246,248,251,0.78) 0%,rgba(237,240,243,0.65) 50%,rgba(237,240,243,0.82) 100%)}
-[data-theme="dark"] .welcome-screen::after{background:linear-gradient(to bottom,rgba(26,26,26,0.78) 0%,rgba(40,40,40,0.65) 50%,rgba(41,41,41,0.82) 100%)}
+.welcome-screen{position:fixed;inset:0;z-index:85;display:flex;align-items:center;justify-content:center;overflow-y:auto;color:#000;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI Variable Text","Segoe UI",system-ui,sans-serif;background:#f2f2f7}
+[data-theme="dark"] .welcome-screen{color:#fff;background:#000}
 .welcome-visual-card{pointer-events:none;position:fixed;inset:0;z-index:0;margin:0;overflow:hidden;padding:6vh 4vw}
-.welcome-keyboard-image{height:100%;width:100%;object-fit:contain;object-position:center;opacity:0.25}
-[data-theme="dark"] .welcome-keyboard-image{opacity:0.18}
+.welcome-keyboard-image{height:100%;width:100%;object-fit:contain;object-position:center;opacity:0.12}
 .welcome-card{position:relative;z-index:2;display:flex;width:100%;max-width:56rem;flex-direction:column;align-items:center;gap:2rem;padding:3rem 1rem}
 .welcome-copy{display:flex;flex-direction:column;align-items:center;text-align:center;max-width:36rem}
-.welcome-start-button{display:inline-flex;align-items:center;justify-content:center;border-radius:9999px;background-color:#3ccb9a;padding:1rem 3rem;font-size:1.125rem;font-weight:900;color:#282828;border:none;cursor:pointer}
+.welcome-start-button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;border-radius:12px;background-color:#3ccb9a;padding:.75rem 2.5rem;font-size:1.0625rem;font-weight:600;color:#0b1f18;border:none;cursor:pointer}
+@media (min-width:1024px){.welcome-screen{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:3rem;padding:0 3rem}.welcome-visual-card{position:static;display:flex;align-items:center;justify-content:center;padding:0}.welcome-keyboard-image{height:auto;max-height:70dvh;border-radius:22px;opacity:1}.welcome-card{align-items:flex-start;padding:2rem 0}.welcome-copy{align-items:flex-start;text-align:left}}
+/* ADR-028 landscape-first: touch devices in portrait only see the rotate screen; fine pointers are never blocked */
+.rotate-screen{display:none}
+@media (orientation:portrait) and (pointer:coarse){
+.rotate-screen{position:fixed;inset:0;z-index:10000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;padding:2rem;text-align:center;background:#f2f2f7;color:#000;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI Variable Text","Segoe UI",system-ui,sans-serif}
+[data-theme="dark"] .rotate-screen{background:#000;color:#fff}
+body>:not(#rotate-screen){visibility:hidden!important}
+.rotate-screen-icon{width:4rem;height:4rem;color:#14704f}
+[data-theme="dark"] .rotate-screen-icon{color:#3ccb9a}
+.rotate-screen-title{margin:0;font-size:1.75rem;font-weight:700;line-height:1.2}
+.rotate-screen-copy{margin:0;max-width:22rem;font-size:1.0625rem;line-height:1.4;color:#5c5c61}
+[data-theme="dark"] .rotate-screen-copy{color:#aeaeb2}
+}
 /* SEC-010: never render inside a frame (clickjacking); set by theme-preboot.js */
 html[data-framed="true"]{display:none!important}
 }

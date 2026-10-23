@@ -19,15 +19,14 @@
  * at build time; keep them adjacent and in this form.
  */
 
-const CACHE = "keyboardpractice-f81a3dff3ee1";
+const CACHE = "keyboardpractice-72b5ed5aa42a";
 const ASSETS = [
   "index.html",
-  "app.CH0j06iz.js",
-  "app.B5xPck9e.css",
+  "app.CDfOjpAa.js",
+  "app.Bu7ZI1eQ.css",
   "critical.css",
   "favicon.svg",
   "theme-preboot.js",
-  "sidebar.js",
   "design/ka360.png",
   "manifest.json"
 ];
