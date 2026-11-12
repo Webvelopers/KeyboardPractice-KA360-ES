@@ -19,11 +19,11 @@
  * at build time; keep them adjacent and in this form.
  */
 
-const CACHE = "keyboardpractice-b8948ef887a5";
+const CACHE = "keyboardpractice-56629ca68dff";
 const ASSETS = [
   "index.html",
-  "app.FM-4h5aJ.js",
-  "app.Dvz8tMm3.css",
+  "app.BeBgxIKg.js",
+  "app.CAN-XUja.css",
   "critical.css",
   "favicon.svg",
   "theme-preboot.js",

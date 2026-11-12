@@ -18,8 +18,8 @@
     <title>Español | Latinoamérica</title>
     <script src="./theme-preboot.js"></script>
     <link rel="stylesheet" href="./critical.css" />
-    <script type="module" crossorigin src="./app.FM-4h5aJ.js"></script>
-    <link rel="stylesheet" crossorigin href="./app.Dvz8tMm3.css">
+    <script type="module" crossorigin src="./app.BeBgxIKg.js"></script>
+    <link rel="stylesheet" crossorigin href="./app.CAN-XUja.css">
   </head>
 <body class="min-h-screen bg-canvas text-label transition-colors">
     <!-- Touch devices in portrait see only this screen (ADR-028, landscape-first); critical.css shows it. -->
@@ -45,7 +45,7 @@
       </figure>
       <section class="welcome-card" aria-label="Bienvenida a KeyboardPractice">
         <div class="welcome-copy">
-          <p class="welcome-eyebrow">KeyboardPractice</p>
+          <p class="welcome-eyebrow">KeyboardPractice <span class="app-version" data-app-version></span></p>
           <h1 id="welcome-title" class="welcome-title">Entrena mecanografia en tu Kinesis Advantage 360.</h1>
           <p id="welcome-description" class="welcome-description">Practica el teclado en espanol latino con una experiencia local, progresiva y preparada para funcionar sin conexion.</p>
 
@@ -57,7 +57,6 @@
 
           <p id="welcome-security-note" class="welcome-security-note">Al iniciar, continuaremos con la frase de seguridad local para configurar o desbloquear tus datos. Esta pantalla no omite ese paso.</p>
           <button id="welcome-start-button" class="welcome-start-button" type="button" aria-describedby="welcome-security-note">Iniciar</button>
-          <p class="app-version" data-app-version></p>
           <p id="welcome-status" class="sr-only" role="status" aria-live="polite">Pantalla de bienvenida lista. El boton Iniciar abre el flujo protegido de KeyboardPractice.</p>
         </div>
       </section>
@@ -94,10 +93,12 @@
       <aside id="app-sidebar" class="app-sidebar" aria-label="Navegación">
         <p class="app-sidebar-brand">
           <img class="app-brand-icon" src="./favicon.svg" alt="" aria-hidden="true" />
-          <span>KeyboardPractice</span>
+          <span class="app-brand-text">
+            <span>KeyboardPractice</span>
+            <span class="app-version" data-app-version></span>
+          </span>
         </p>
         <nav id="sidebar-nav" class="sidebar-nav" aria-label="Navegación principal"></nav>
-        <p class="app-version" data-app-version></p>
       </aside>
 
       <div class="app-content">
@@ -391,8 +392,11 @@
             </div>
 
             <article class="stats-section-card" aria-labelledby="stats-lessons-title">
-              <h3 id="stats-lessons-title" class="stats-section-title">Ruta de aprendizaje</h3>
-              <div id="stats-lesson-grid" class="stats-lesson-grid" role="list" aria-labelledby="stats-lessons-title" tabindex="0"></div>
+              <div class="stats-route-header">
+                <h3 id="stats-lessons-title" class="stats-section-title">Ruta de aprendizaje</h3>
+                <p class="stats-route-legend">✓ dominada · ↻ repaso pendiente · número resaltado: abierta · borde punteado: bloqueada</p>
+              </div>
+              <div id="stats-lesson-grid" class="stats-route"></div>
             </article>
           </div>
         </section>
