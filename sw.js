@@ -10,8 +10,11 @@
  *   network untouched.
  * - Navigations (e.g. "/" or "/?x=1") fall back to the cached `index.html`, so
  *   the app opens offline at its normal URL, not only at "/index.html".
- * - Activation deletes only this app's old caches ("keyboardpractice-*"), never
- *   caches of other apps that may share the origin (e.g. a GitHub Pages user site).
+ * - Activation deletes only this app's old caches (same cache family:
+ *   "keyboardpractice-" or, for the debug build, "keyboardpractice-debug-"),
+ *   never caches of other apps that may share the origin (e.g. a GitHub Pages
+ *   user site or the debug build in debug/, ADR-030).
+ * - Requests under debug/ are left to the debug build's own worker.
  * - Only the exact `{ action: "skipWaiting" }` message from a page of this
  *   origin activates a waiting worker.
  *
@@ -19,10 +22,10 @@
  * at build time; keep them adjacent and in this form.
  */
 
-const CACHE = "keyboardpractice-8bcec5a5a885";
+const CACHE = "keyboardpractice-1434c9ccfe6d";
 const ASSETS = [
   "index.html",
-  "app.x7sXZire.js",
+  "app.CbNPVajF.js",
   "app.BUPAPuMk.css",
   "critical.css",
   "favicon.svg",
@@ -31,8 +34,25 @@ const ASSETS = [
   "manifest.json"
 ];
 
-const CACHE_PREFIX = "keyboardpractice-";
+/**
+ * This worker's cache family: "keyboardpractice-" for the app at the site
+ * root, "keyboardpractice-debug-" for the debug build in `debug/` (ADR-030).
+ * Activation only deletes old caches of its own family.
+ */
+const CACHE_FAMILY = CACHE.slice(0, CACHE.lastIndexOf("-") + 1);
 const APP_SHELL_URL = new URL("index.html", self.registration.scope).href;
+/** The debug build lives in `debug/` with its own worker; never answer for it. */
+const NESTED_DEBUG_APP_URL = new URL("debug/", self.registration.scope).href;
+
+/**
+ * Returns the cache family of a cache name ("keyboardpractice-debug-abc" →
+ * "keyboardpractice-debug-").
+ * @param {string} key
+ * @returns {string}
+ */
+function cacheFamilyOf(key) {
+  return key.slice(0, key.lastIndexOf("-") + 1);
+}
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
@@ -48,7 +68,7 @@ self.addEventListener("activate", (event) => {
       .then((keys) =>
         Promise.all(
           keys
-            .filter((key) => key.startsWith(CACHE_PREFIX) && key !== CACHE)
+            .filter((key) => cacheFamilyOf(key) === CACHE_FAMILY && key !== CACHE)
             .map((key) => caches.delete(key))
         )
       )
@@ -77,6 +97,8 @@ self.addEventListener("fetch", (event) => {
   }
   // SEC-019: never answer cross-origin requests from this cache.
   if (url.origin !== self.location.origin) return;
+  // The debug app in debug/ is served by its own worker (or the network).
+  if (url.href.startsWith(NESTED_DEBUG_APP_URL)) return;
 
   if (request.mode === "navigate") {
     // App shell for any navigation inside the scope; network as last resort.

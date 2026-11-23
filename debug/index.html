@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="es" data-theme="light">
+  <head>
+    <meta http-equiv="Content-Security-Policy" content="default-src &#39;self&#39;; script-src &#39;self&#39;; style-src &#39;self&#39;; img-src &#39;self&#39;; font-src &#39;self&#39;; connect-src &#39;self&#39;; worker-src &#39;self&#39;; manifest-src &#39;self&#39;; object-src &#39;none&#39;; base-uri &#39;self&#39;; form-action &#39;none&#39;; require-trusted-types-for &#39;script&#39;; trusted-types keyboardpractice-sw">
+
+    <meta charset="UTF-8" />
+    <!-- viewport-fit=cover enables env(safe-area-inset-*) on iPad/iPhone (ADR-028). -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="KeyboardPractice" />
+    <meta name="description" content="Practica mecanografia en un teclado Kinesis Advantage 360 configurado en Espanol Latinoamericano." />
+    <meta name="theme-color" content="#f2f2f7" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
+    <title>Español | Latinoamérica</title>
+    <script src="./theme-preboot.js"></script>
+    <link rel="stylesheet" href="./critical.css" />
+    <script type="module" crossorigin src="./app.q6ltSfp2.js"></script>
+    <link rel="stylesheet" crossorigin href="./app.BUPAPuMk.css">
+  </head>
+<body class="min-h-screen bg-canvas text-label transition-colors">
+    <!-- Touch devices in portrait see only this screen (ADR-028, landscape-first); critical.css shows it. -->
+    <section id="rotate-screen" class="rotate-screen" aria-labelledby="rotate-screen-title">
+      <svg class="rotate-screen-icon" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><rect x="5" y="4" width="15" height="24" rx="2.5" fill="none" stroke="currentColor" stroke-width="2" opacity="0.4" /><rect x="14" y="24" width="29" height="18" rx="3" fill="none" stroke="currentColor" stroke-width="2.5" /><path d="M25 7a13 13 0 0 1 12 11M37 18l-4.5-1.5M37 18l1.5-4.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+      <h1 id="rotate-screen-title" class="rotate-screen-title">Gira tu iPad</h1>
+      <p class="rotate-screen-copy">KeyboardPractice está diseñada para usarse en horizontal. Gira el dispositivo para continuar.</p>
+    </section>
+    <a id="app-skip-link" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:text-kinesis-graphite" href="#main-content" hidden>Saltar al contenido principal</a>
+
+    <!-- Pre-loader: visible immediately while CSS, JS, and images load -->
+    <div id="app-preloader" class="app-preloader" aria-label="Cargando KeyboardPractice">
+      <div class="app-preloader-content">
+        <div class="app-preloader-spinner" aria-hidden="true"></div>
+        <p class="app-preloader-brand">KeyboardPractice</p>
+        <p class="app-preloader-status" role="status">Preparando...</p>
+      </div>
+    </div>
+
+<div id="welcome-screen" class="welcome-screen" role="dialog" aria-modal="true" aria-labelledby="welcome-title" aria-describedby="welcome-description welcome-security-note" hidden>
+      <figure class="welcome-visual-card" aria-hidden="true">
+        <img class="welcome-keyboard-image" src="./design/ka360.png" alt="" aria-hidden="true" />
+      </figure>
+      <section class="welcome-card" aria-label="Bienvenida a KeyboardPractice">
+        <div class="welcome-copy">
+          <p class="welcome-eyebrow">KeyboardPractice <span class="app-version" data-app-version></span></p>
+          <h1 id="welcome-title" class="welcome-title">Entrena mecanografia en tu Kinesis Advantage 360.</h1>
+          <p id="welcome-description" class="welcome-description">Practica el teclado en espanol latino con una experiencia local, progresiva y preparada para funcionar sin conexion.</p>
+
+          <ul class="welcome-feature-list" aria-label="Resumen de beneficios">
+            <li><span aria-hidden="true">✓</span><span>Tu progreso permanece cifrado en este navegador.</span></li>
+            <li><span aria-hidden="true">✓</span><span>Los ejercicios se adaptan a tu avance sin depender de servicios externos.</span></li>
+            <li><span aria-hidden="true">✓</span><span>La practica continua disponible aun cuando no tengas conexion.</span></li>
+          </ul>
+
+          <p id="welcome-security-note" class="welcome-security-note">Al iniciar, continuaremos con la frase de seguridad local para configurar o desbloquear tus datos. Esta pantalla no omite ese paso.</p>
+          <button id="welcome-start-button" class="welcome-start-button" type="button" aria-describedby="welcome-security-note">Iniciar</button>
+          <p id="welcome-status" class="sr-only" role="status" aria-live="polite">Pantalla de bienvenida lista. El boton Iniciar abre el flujo protegido de KeyboardPractice.</p>
+        </div>
+      </section>
+    </div>
+
+    <div id="app-loader" class="app-loader" data-progress="5" aria-labelledby="app-loader-title" aria-describedby="app-loader-status app-loader-phase" hidden>
+      <section class="app-loader-card" aria-label="Estado de carga inicial">
+        <p class="app-loader-brand">KeyboardPractice</p>
+        <h2 id="app-loader-title" class="app-loader-title">Cargando KeyboardPractice…</h2>
+        <p id="app-loader-status" class="app-loader-status" role="status" aria-live="polite">Preparando la experiencia de practica.</p>
+        <div class="app-loader-progress-shell">
+          <div
+            id="app-loader-progress"
+            class="app-loader-progress"
+            role="progressbar"
+            aria-label="Progreso de carga inicial"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow="5"
+          >
+            <span id="app-loader-progress-fill" class="app-loader-progress-fill"></span>
+          </div>
+          <div class="app-loader-progress-meta" aria-live="polite">
+            <span id="app-loader-phase">Inicio</span>
+            <span id="app-loader-percent">5%</span>
+          </div>
+        </div>
+        <p class="app-loader-hint">Tus datos permanecen en este navegador y la aplicacion funciona sin conexion.</p>
+      </section>
+    </div>
+
+    <div class="app-shell" hidden>
+      <!-- Sidebar from 1024px, bottom tab bar below (ADR-028). One live tree; CSS places it. -->
+      <aside id="app-sidebar" class="app-sidebar" aria-label="Navegación">
+        <p class="app-sidebar-brand">
+          <img class="app-brand-icon" src="./favicon.svg" alt="" aria-hidden="true" />
+          <span class="app-brand-text">
+            <span>KeyboardPractice</span>
+            <span class="app-version" data-app-version></span>
+          </span>
+        </p>
+        <nav id="sidebar-nav" class="sidebar-nav" aria-label="Navegación principal"></nav>
+      </aside>
+
+      <div class="app-content">
+        <header id="app-navbar" class="app-navbar">
+          <p id="app-navbar-title" class="app-navbar-title" aria-hidden="true">Evaluación</p>
+        </header>
+
+        <main id="main-content" class="app-main" tabindex="-1" data-active-section="practice">
+          <h1 id="app-section-title" class="app-large-title">Evaluación</h1>
+          <p id="storage-warning" class="storage-warning-banner hidden" role="status"></p>
+          <p id="app-section-announcer" class="sr-only" aria-live="polite"></p>
+          <section id="practice-panel" class="practice-panel app-panel" aria-labelledby="active-lesson-title" data-app-section="practice">
+          <div class="practice-panel-header">
+            <div class="practice-title-block">
+              <div class="practice-status-row">
+                <p id="lesson-state" class="practice-panel-eyebrow">Tu reto actual</p>
+              </div>
+              <h2 id="active-lesson-title" class="practice-panel-title">Cargando</h2>
+              <p id="active-lesson-objective" class="practice-panel-summary"></p>
+            </div>
+            <div class="practice-metric-grid" aria-label="Metricas de practica en vivo">
+              <div class="metric-card metric-live-secondary"><p id="metric-wpm" class="metric-value">0</p><p class="metric-label">PPM</p></div>
+              <div class="metric-card"><p id="metric-accuracy" class="metric-value">100%</p><p class="metric-label">Precision</p></div>
+              <div class="metric-card metric-live-secondary"><p id="metric-errors" class="metric-value">0</p><p class="metric-label">Errores</p></div>
+              <div class="metric-card metric-live-secondary" aria-label="Racha actual de caracteres correctos"><p id="metric-streak" class="metric-value">0</p><p class="metric-label">Racha</p></div>
+              <div class="metric-card metric-live-secondary"><p id="metric-time" class="metric-value">00:00</p><p class="metric-label">Tiempo</p></div>
+            </div>
+          </div>
+
+          <div id="main-practice-dashboard" class="main-practice-dashboard" aria-label="Tablero principal de practica">
+            <article class="practice-summary-card" aria-labelledby="summary-lesson-title">
+              <div>
+                <p id="summary-status" class="summary-eyebrow">Sesion en curso</p>
+                <h3 id="summary-lesson-title" class="summary-title">Preparando tu entrenamiento</h3>
+                <p id="summary-objective" class="summary-objective">Ajustando la siguiente practica a tu progreso.</p>
+              </div>
+              <div class="summary-meta-grid" aria-label="Resumen de la practica activa">
+                <div><span class="summary-meta-label">Teclas foco</span><div id="summary-keys" class="summary-focus-keyboard" aria-label="Teclado virtual con teclas foco activas"></div></div>
+                <div class="summary-progress-block">
+                  <p id="summary-progress" class="summary-progress-value">0%</p>
+                  <p class="summary-meta-label">Avance</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="action-card side-card">
+              <h3 class="card-heading">Acciones</h3>
+              <div class="primary-action-stack" aria-label="Controles de practica con atajos de teclado">
+                <button id="start-button" class="control-button control-button-primary" type="button" aria-label="Empezar entrenamiento" data-tooltip="Empezar entrenamiento" title="Empezar entrenamiento"><span id="primary-action-icon" class="control-icon" aria-hidden="true">▶</span><span id="primary-action-label" class="control-action-label">Empezar entrenamiento</span><span id="primary-action-shortcut" class="control-shortcut">Alt+K</span></button>
+                <button id="finish-button" class="hidden" type="button" aria-hidden="true" disabled></button>
+                <button id="reset-button" class="hidden" type="button" aria-hidden="true" disabled></button>
+                <button id="prev-button" class="control-button" type="button" aria-label="Reto anterior, atajo Alt+F" data-tooltip="Reto anterior" title="Reto anterior" disabled><span class="control-icon" aria-hidden="true">⏮</span><span class="control-action-label">Reto anterior</span><span class="control-shortcut">Alt+F</span></button>
+                <button id="next-button" class="control-button" type="button" aria-label="Siguiente reto, atajo Alt+H" data-tooltip="Siguiente reto" title="Siguiente reto · Alt+H" disabled><span class="control-icon" aria-hidden="true">⏭</span><span class="control-action-label">Siguiente reto</span><span class="control-shortcut">Alt+H</span></button>
+              </div>
+            </article>
+
+            <article class="focus-feedback-card dashboard-feedback-card" aria-labelledby="feedback-title">
+              <div class="feedback-card-header">
+                <h3 id="feedback-title" class="card-heading">Feedback inmediato</h3>
+              </div>
+              <p id="feedback" class="card-body" role="status" aria-live="polite" aria-atomic="true">Coloca tus manos, respira y empieza cuando estes listo.</p>
+            </article>
+
+          </div>
+
+          <div class="practice-main-grid">
+            <div class="practice-typing-column">
+              <article class="instruction-card">
+                <h3 class="card-heading">Instrucciones</h3>
+                <p id="lesson-instructions" class="card-body"></p>
+              </article>
+
+              <div class="focus-practice-only">
+                <div class="mb-3 flex items-center justify-between gap-3">
+                  <h3 class="card-heading">Texto a dominar</h3>
+                </div>
+                <div class="lesson-line-progress-stage">
+                  <div class="lesson-line-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Progreso del ejercicio">
+                    <span id="line-progress-fill" class="lesson-line-progress-fill"></span>
+                    <span id="metric-progress" class="lesson-line-progress-label">Linea 1/1 - 0% completo</span>
+                  </div>
+                  <div id="line-combo-feedback" class="line-combo-feedback" role="status" aria-live="polite" aria-atomic="true" hidden></div>
+                </div>
+                <p id="exercise-target-instructions" class="sr-only">Area de practica. Pulsa Empezar entrenamiento y escribe el texto mostrado. Enter confirma lineas no finales; Tab sale del area.</p>
+                <div id="exercise-target" class="target-text" role="region" tabindex="0" aria-label="Texto objetivo de practica. Escribe las teclas indicadas." aria-describedby="exercise-target-instructions feedback metric-progress"></div>
+              </div>
+
+              <div id="keyboard-slot" class="practice-keyboard-row">
+                <article id="keyboard-card" class="side-card">
+                <div class="flex items-center justify-between gap-3">
+                  <h3 class="card-heading">Teclado KA360</h3>
+                  <p id="active-key-label" class="active-key-label">Sin tecla</p>
+                </div>
+                <div class="ka-demo-container" aria-label="Teclado Kinesis Advantage 360 en Espanol Latinoamericano">
+                  <div class="ka-keyboard-wrap">
+                    <div id="keyboard-visual" class="ka-keyboard">
+                      <div class="ka-half left">
+                        <div class="ka-key" data-key="Escape|Esc">Esc</div>
+                        <div class="ka-key" data-key="F1">F1</div>
+                        <div class="ka-key" data-key="F2">F2</div>
+                        <div class="ka-key" data-key="F3">F3</div>
+                        <div class="ka-key" data-key="F4">F4</div>
+                        <div class="ka-key" data-key="F5">F5</div>
+                        <div class="ka-key" data-key="Kp">Kp</div>
+                        <div class="ka-empty"></div>
+
+                        <div class="ka-key" data-key="Tab">⇥</div>
+                        <div class="ka-key" data-key="q">Q</div>
+                        <div class="ka-key" data-key="w">W</div>
+                        <div class="ka-key" data-key="e">E</div>
+                        <div class="ka-key" data-key="r">R</div>
+                        <div class="ka-key" data-key="t">T</div>
+                        <div class="ka-key" data-key="Home">Inicio</div>
+                        <div class="ka-empty"></div>
+
+                        <div class="ka-key" data-key="CapsLock">⇪</div>
+                        <div class="ka-key ka-home is-active" data-key="a">A</div>
+                        <div class="ka-key ka-home is-active" data-key="s">S</div>
+                        <div class="ka-key ka-home is-active" data-key="d">D</div>
+                        <div class="ka-key ka-home is-active" data-key="f">F</div>
+                        <div class="ka-key" data-key="g">G</div>
+                        <div class="ka-key" data-key="End">Fin</div>
+                        <div class="ka-empty"></div>
+
+                        <div class="ka-key" data-key="Shift">⇧</div>
+                        <div class="ka-key" data-key="z">Z</div>
+                        <div class="ka-key" data-key="x">X</div>
+                        <div class="ka-key" data-key="c">C</div>
+                        <div class="ka-key" data-key="v">V</div>
+                        <div class="ka-key" data-key="b">B</div>
+                        <div class="ka-empty"></div>
+                        <div class="ka-empty"></div>
+
+                        <div class="ka-key">⑤</div>
+                        <div class="ka-key" data-key="PrintScreen">PrtScr</div>
+                        <div class="ka-key" data-key="MediaTrackPrevious">⏮</div>
+                        <div class="ka-key" data-key="ArrowLeft">←</div>
+                        <div class="ka-key" data-key="ArrowRight">→</div>
+                        <div class="ka-empty"></div>
+                        <div class="ka-key" data-key="Command">⌘</div>
+                        <div class="ka-key">⑦</div>
+
+                        <div class="ka-empty"></div><div class="ka-empty"></div><div class="ka-empty"></div><div class="ka-empty"></div><div class="ka-empty"></div>
+                        <div class="ka-key ka-wide-v" data-key="Delete">⌦</div>
+                        <div class="ka-key ka-wide-v is-active" data-key="Backspace">⌫</div>
+
+                        <div class="ka-key">④</div>
+                        <div class="ka-empty"></div><div class="ka-empty"></div><div class="ka-empty"></div><div class="ka-empty"></div><div class="ka-empty"></div>
+                        <div class="ka-key">③</div>
+                      </div>
+
+                      <div class="ka-half right">
+                        <div class="ka-empty"></div>
+                        <div class="ka-key">Mod</div>
+                        <div class="ka-key" data-key="F6">F6</div>
+                        <div class="ka-key" data-key="F7">F7</div>
+                        <div class="ka-key" data-key="F8">F8</div>
+                        <div class="ka-key" data-key="F9">F9</div>
+                        <div class="ka-key" data-key="F10">F10</div>
+                        <div class="ka-key" data-key="Fn">Fn</div>
+
+                        <div class="ka-empty"></div>
+                        <div class="ka-key" data-key="PageUp">RePág</div>
+                        <div class="ka-key" data-key="y">Y</div>
+                        <div class="ka-key" data-key="u">U</div>
+                        <div class="ka-key" data-key="i">I</div>
+                        <div class="ka-key" data-key="o">O</div>
+                        <div class="ka-key" data-key="p">P</div>
+                        <div class="ka-key" data-key="´|¨|á|é|í|ó|ú">¨<br />´</div>
+
+                        <div class="ka-empty"></div>
+                        <div class="ka-key" data-key="PageDown">AvPág</div>
+                        <div class="ka-key" data-key="h">H</div>
+                        <div class="ka-key ka-home is-active" data-key="j">J</div>
+                        <div class="ka-key ka-home is-active" data-key="k">K</div>
+                        <div class="ka-key ka-home is-active" data-key="l">L</div>
+                        <div class="ka-key ka-home is-active" data-key="ñ">Ñ</div>
+                        <div class="ka-key" data-key="CapsLock">⇪</div>
+
+                        <div class="ka-empty"></div><div class="ka-empty"></div>
+                        <div class="ka-key" data-key="n">N</div>
+                        <div class="ka-key" data-key="m">M</div>
+                        <div class="ka-key" data-key=",|;">;<br />,</div>
+                        <div class="ka-key" data-key=".|:">:<br />.</div>
+                        <div class="ka-key" data-key="-|_">_<br />-</div>
+                        <div class="ka-key" data-key="Shift">⇧</div>
+
+                        <div class="ka-key" data-key="Option">⌥</div>
+                        <div class="ka-key" data-key="Control">⌃</div>
+                        <div class="ka-empty"></div>
+                        <div class="ka-key" data-key="ArrowDown">↓</div>
+                        <div class="ka-key" data-key="ArrowUp">↑</div>
+                        <div class="ka-key" data-key="MediaPlayPause">⏯</div>
+                        <div class="ka-key" data-key="MediaTrackNext">⏭</div>
+                        <div class="ka-key">⑥</div>
+
+                        <div class="ka-key">②</div>
+                        <div class="ka-key ka-wide-v is-active" data-key=" ">␣</div>
+                        <div class="ka-key ka-wide-v" data-key="Enter|\n">⏎</div>
+                        <div class="ka-empty"></div><div class="ka-empty"></div><div class="ka-empty"></div><div class="ka-empty"></div><div class="ka-empty"></div>
+
+                        <div class="ka-key">①</div>
+                        <div class="ka-empty"></div><div class="ka-empty"></div><div class="ka-empty"></div><div class="ka-empty"></div><div class="ka-empty"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="practice-route-panel" class="practice-route-panel app-panel" aria-labelledby="course-title" aria-describedby="course-summary" data-app-section="course" hidden>
+          <div class="practice-panel-header section-panel-header">
+            <div>
+              <div class="section-status-row">
+                <p class="section-panel-eyebrow">Curso</p>
+              </div>
+              <h2 id="course-title" class="section-panel-title">Cargando curso</h2>
+              <p id="course-summary" class="section-panel-summary">Ruta, criterios y estado de practica.</p>
+            </div>
+            <p class="course-progress-pill"><span id="course-progress">0%</span> <span>de avance</span></p>
+          </div>
+
+          <!-- Landscape master-detail (ADR-028): lessons left, current lesson detail right; each pane scrolls. -->
+          <div class="practice-route-body">
+            <section class="route-card route-lessons-pane" aria-label="Selector de practicas del curso">
+              <div id="lesson-list" aria-label="Selector de practicas del curso"></div>
+            </section>
+
+            <div class="route-detail-pane" role="region" aria-label="Detalle de la leccion actual" tabindex="0">
+              <section class="route-card">
+                <h3 class="card-heading">Evaluacion</h3>
+                <div id="criteria-list" class="criteria-list"></div>
+              </section>
+
+              <section class="route-card">
+                <h3 class="card-heading">Ultimo resultado</h3>
+                <p id="last-session" class="card-body">Tu primer resultado aparecera aqui.</p>
+              </section>
+
+              <section class="route-card">
+                <h3 class="card-heading">Como desbloqueas el avance</h3>
+                <ul class="route-rules">
+                  <li><span class="route-rule-value">95%</span><span>precision minima.</span></li>
+                  <li><span class="route-rule-value">Tiempo</span><span>completar dentro del tiempo maximo objetivo de la practica.</span></li>
+                  <li><span class="route-rule-value">5%</span><span>errores maximos permitidos.</span></li>
+                  <li><span class="route-rule-value">PPM</span><span>segun dificultad de la leccion.</span></li>
+                </ul>
+              </section>
+
+              <section class="route-card">
+                <h3 class="card-heading">Como funciona</h3>
+                <ol class="route-howto">
+                  <li><strong>Empezar entrenamiento:</strong> enfoca el area de practica, reinicia el temporizador y bloquea cambios de leccion.</li>
+                  <li><strong>Finalizar intento:</strong> guarda metricas, evalua precision, PPM, errores y tiempo maximo objetivo.</li>
+                  <li><strong>Repetir:</strong> borra el intento actual o prepara una nueva repeticion sin cambiar el progreso aprobado.</li>
+                  <li><strong>Siguiente leccion:</strong> aparece habilitado solo cuando la proxima leccion fue desbloqueada.</li>
+                  <li><strong>Atajos:</strong> usa Alt+K en Windows/Linux o ⌘+K en macOS para iniciar, Esc para finalizar, Alt+H/⌘+H para avanzar y Enter/⏎ para cerrar mensajes emergentes.</li>
+                </ol>
+              </section>
+            </div>
+          </div>
+        </section>
+
+        <section id="stats-panel" class="stats-panel app-panel" aria-labelledby="stats-title" data-app-section="stats" hidden>
+          <div class="stats-panel-header section-panel-header">
+            <div>
+              <div class="section-status-row">
+                <p class="stats-panel-eyebrow section-panel-eyebrow">Progreso acumulado</p>
+              </div>
+              <h2 id="stats-title" class="stats-panel-title section-panel-title">Tu progreso</h2>
+              <p id="stats-summary" class="stats-panel-summary section-panel-summary">Sin sesiones registradas.</p>
+            </div>
+          </div>
+
+          <div id="stats-content" class="stats-content">
+            <div id="stats-kpi-grid" class="stats-kpi-grid" role="list" aria-label="Indicadores generales de practica"></div>
+
+            <div class="stats-detail-grid">
+              <article class="stats-section-card" aria-labelledby="stats-errors-title">
+                <h3 id="stats-errors-title" class="stats-section-title">Patrones a corregir</h3>
+                <div id="stats-error-list" class="stats-list" role="list" aria-labelledby="stats-errors-title" tabindex="0"></div>
+              </article>
+
+              <article class="stats-section-card" aria-labelledby="stats-history-title">
+                <h3 id="stats-history-title" class="stats-section-title">Ultimas sesiones</h3>
+                <div id="stats-history-list" class="stats-list" role="list" aria-labelledby="stats-history-title" tabindex="0"></div>
+              </article>
+            </div>
+
+            <article class="stats-section-card" aria-labelledby="stats-lessons-title">
+              <div class="stats-route-header">
+                <h3 id="stats-lessons-title" class="stats-section-title">Ruta de aprendizaje</h3>
+                <p class="stats-route-legend">✓ dominada · ↻ repaso pendiente · número resaltado: abierta · borde punteado: bloqueada</p>
+              </div>
+              <div id="stats-lesson-grid" class="stats-route"></div>
+            </article>
+          </div>
+        </section>
+      </main>
+      </div>
+    </div>
+
+  </body>
+</html>

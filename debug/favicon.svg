@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">KeyboardPractice K</title>
+  <desc id="desc">Icono con la letra K inspirado en Kinesis y practica de teclado.</desc>
+  <defs>
+    <linearGradient id="bg" x1="8" y1="6" x2="56" y2="58" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3ccb9a" />
+      <stop offset="1" stop-color="#1f6f8b" />
+    </linearGradient>
+    <linearGradient id="key" x1="18" y1="18" x2="48" y2="50" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff" />
+      <stop offset="1" stop-color="#edf0f3" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#bg)" />
+  <path d="M14 48h36" fill="none" stroke="#10323d" stroke-opacity="0.22" stroke-width="4" stroke-linecap="round" />
+  <path d="M22 17v30" fill="none" stroke="url(#key)" stroke-width="8" stroke-linecap="round" />
+  <path d="M43 17 27 32l17 15" fill="none" stroke="url(#key)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="48" cy="16" r="4" fill="#f9c74f" />
+</svg>
