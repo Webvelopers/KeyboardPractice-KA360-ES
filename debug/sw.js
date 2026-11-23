@@ -22,10 +22,10 @@
  * at build time; keep them adjacent and in this form.
  */
 
-const CACHE = "keyboardpractice-debug-2a660e8a8702";
+const CACHE = "keyboardpractice-debug-2ada294e6081";
 const ASSETS = [
   "index.html",
-  "app.BtZvITJM.js",
+  "app.CLcD1uIP.js",
   "app.JazyEHIZ.css",
   "critical.css",
   "favicon.svg",
