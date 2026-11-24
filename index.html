@@ -18,8 +18,8 @@
     <title>Español | Latinoamérica</title>
     <script src="./theme-preboot.js"></script>
     <link rel="stylesheet" href="./critical.css" />
-    <script type="module" crossorigin src="./app.Cxqd3WrN.js"></script>
-    <link rel="stylesheet" crossorigin href="./app._9u71STi.css">
+    <script type="module" crossorigin src="./app.BB1B0JUA.js"></script>
+    <link rel="stylesheet" crossorigin href="./app.BOnFZvQe.css">
   </head>
 <body class="min-h-screen bg-canvas text-label transition-colors">
     <!-- Touch devices in portrait see only this screen (ADR-028, landscape-first); critical.css shows it. -->
@@ -312,97 +312,123 @@
           </div>
         </section>
 
-        <section id="practice-route-panel" class="practice-route-panel app-panel" aria-labelledby="course-title" aria-describedby="course-summary" data-app-section="course" hidden>
-          <div class="practice-panel-header section-panel-header">
-            <div>
-              <div class="section-status-row">
-                <p class="section-panel-eyebrow">Curso</p>
-              </div>
-              <h2 id="course-title" class="section-panel-title">Cargando curso</h2>
-              <p id="course-summary" class="section-panel-summary">Ruta, criterios y estado de practica.</p>
-            </div>
-            <p class="course-progress-pill"><span id="course-progress">0%</span> <span>de avance</span></p>
-          </div>
-
-          <!-- Landscape master-detail (ADR-028): lessons left, current lesson detail right; each pane scrolls. -->
-          <div class="practice-route-body">
-            <section class="route-card route-lessons-pane" aria-label="Selector de practicas del curso">
-              <div id="lesson-list" aria-label="Selector de practicas del curso"></div>
-            </section>
-
-            <div class="route-detail-pane" role="region" aria-label="Detalle de la leccion actual" tabindex="0">
-              <section class="route-card">
-                <h3 class="card-heading">Evaluacion</h3>
-                <div id="criteria-list" class="criteria-list"></div>
-              </section>
-
-              <section class="route-card">
-                <h3 class="card-heading">Ultimo resultado</h3>
-                <p id="last-session" class="card-body">Tu primer resultado aparecera aqui.</p>
-              </section>
-
-              <section class="route-card">
-                <h3 class="card-heading">Como desbloqueas el avance</h3>
-                <ul class="route-rules">
-                  <li><span class="route-rule-value">95%</span><span>precision minima.</span></li>
-                  <li><span class="route-rule-value">Tiempo</span><span>completar dentro del tiempo maximo objetivo de la practica.</span></li>
-                  <li><span class="route-rule-value">5%</span><span>errores maximos permitidos.</span></li>
-                  <li><span class="route-rule-value">PPM</span><span>segun dificultad de la leccion.</span></li>
-                </ul>
-              </section>
-
-              <section class="route-card">
-                <h3 class="card-heading">Como funciona</h3>
-                <ol class="route-howto">
-                  <li><strong>Empezar entrenamiento:</strong> enfoca el area de practica, reinicia el temporizador y bloquea cambios de leccion.</li>
-                  <li><strong>Finalizar intento:</strong> guarda metricas, evalua precision, PPM, errores y tiempo maximo objetivo.</li>
-                  <li><strong>Repetir:</strong> borra el intento actual o prepara una nueva repeticion sin cambiar el progreso aprobado.</li>
-                  <li><strong>Siguiente leccion:</strong> aparece habilitado solo cuando la proxima leccion fue desbloqueada.</li>
-                  <li><strong>Atajos:</strong> usa Alt+K en Windows/Linux o ⌘+K en macOS para iniciar, Esc para finalizar, Alt+H/⌘+H para avanzar y Enter/⏎ para cerrar mensajes emergentes.</li>
-                </ol>
-              </section>
-            </div>
-          </div>
-        </section>
-
-        <section id="stats-panel" class="stats-panel app-panel" aria-labelledby="stats-title" data-app-section="stats" hidden>
+        <section id="stats-panel" class="stats-panel app-panel" aria-labelledby="stats-title" data-app-section="progress" hidden>
           <div class="stats-panel-header section-panel-header">
             <div>
               <div class="section-status-row">
-                <p class="stats-panel-eyebrow section-panel-eyebrow">Progreso acumulado</p>
+                <p class="stats-panel-eyebrow section-panel-eyebrow">Progreso</p>
               </div>
               <h2 id="stats-title" class="stats-panel-title section-panel-title">Tu progreso</h2>
               <p id="stats-summary" class="stats-panel-summary section-panel-summary">Sin sesiones registradas.</p>
             </div>
+            <div id="progress-tabs" class="progress-tabs" role="tablist" aria-label="Vistas del progreso">
+              <button id="progress-tab-keys" class="progress-tab" type="button" role="tab" aria-selected="true" aria-controls="progress-keys">Teclas</button>
+              <button id="progress-tab-stats" class="progress-tab" type="button" role="tab" aria-selected="false" aria-controls="progress-stats" tabindex="-1">Estadísticas</button>
+              <button id="progress-tab-course" class="progress-tab" type="button" role="tab" aria-selected="false" aria-controls="progress-course" tabindex="-1">Curso</button>
+            </div>
           </div>
 
-          <div id="stats-content" class="stats-content">
-            <div id="stats-kpi-grid" class="stats-kpi-grid" role="list" aria-label="Indicadores generales de practica"></div>
-
-            <div class="stats-detail-grid">
-              <article class="stats-section-card" aria-labelledby="stats-errors-title">
-                <h3 id="stats-errors-title" class="stats-section-title">Patrones a corregir</h3>
-                <div id="stats-error-list" class="stats-list" role="list" aria-labelledby="stats-errors-title" tabindex="0"></div>
+          <div id="progress-keys" class="progress-tabpanel key-mastery" role="tabpanel" aria-labelledby="progress-tab-keys" tabindex="0">
+            <article class="stats-section-card key-mastery-map-card" aria-labelledby="key-mastery-title">
+              <div class="key-mastery-map-header">
+                <h3 id="key-mastery-title" class="stats-section-title">Dominio por tecla</h3>
+                <ul id="key-mastery-legend" class="key-mastery-legend" aria-label="Leyenda de colores"></ul>
+              </div>
+              <div id="key-mastery-map" class="key-mastery-map"></div>
+              <p id="key-mastery-note" class="key-mastery-note"></p>
+            </article>
+            <div class="key-mastery-side">
+              <div id="key-mastery-kpis" class="key-mastery-kpis" role="list" aria-label="Resumen por tecla"></div>
+              <article class="stats-section-card" aria-labelledby="key-mastery-learned-title">
+                <h3 id="key-mastery-learned-title" class="stats-section-title">Más aprendidas</h3>
+                <div id="key-mastery-learned" class="key-mastery-list" role="list" aria-labelledby="key-mastery-learned-title"></div>
               </article>
-
-              <article class="stats-section-card" aria-labelledby="stats-history-title">
-                <h3 id="stats-history-title" class="stats-section-title">Ultimas sesiones</h3>
-                <div id="stats-history-list" class="stats-list" role="list" aria-labelledby="stats-history-title" tabindex="0"></div>
+              <article class="stats-section-card" aria-labelledby="key-mastery-weak-title">
+                <h3 id="key-mastery-weak-title" class="stats-section-title">Con más errores</h3>
+                <div id="key-mastery-weak" class="key-mastery-list" role="list" aria-labelledby="key-mastery-weak-title"></div>
               </article>
             </div>
+          </div>
 
-            <article class="stats-section-card" aria-labelledby="stats-lessons-title">
-              <div class="stats-route-header">
-                <h3 id="stats-lessons-title" class="stats-section-title">Ruta de aprendizaje</h3>
-                <p class="stats-route-legend">✓ dominada · ↻ repaso pendiente · número resaltado: abierta · borde punteado: bloqueada</p>
+          <div id="progress-stats" class="progress-tabpanel" role="tabpanel" aria-labelledby="progress-tab-stats" hidden>
+            <div id="stats-content" class="stats-content">
+              <div id="stats-kpi-grid" class="stats-kpi-grid" role="list" aria-label="Indicadores generales de practica"></div>
+
+              <div class="stats-detail-grid">
+                <article class="stats-section-card" aria-labelledby="stats-errors-title">
+                  <h3 id="stats-errors-title" class="stats-section-title">Patrones a corregir</h3>
+                  <div id="stats-error-list" class="stats-list" role="list" aria-labelledby="stats-errors-title" tabindex="0"></div>
+                </article>
+
+                <article class="stats-section-card" aria-labelledby="stats-history-title">
+                  <h3 id="stats-history-title" class="stats-section-title">Ultimas sesiones</h3>
+                  <div id="stats-history-list" class="stats-list" role="list" aria-labelledby="stats-history-title" tabindex="0"></div>
+                </article>
               </div>
-              <div id="stats-lesson-grid" class="stats-route"></div>
-            </article>
+
+              <article class="stats-section-card" aria-labelledby="stats-lessons-title">
+                <div class="stats-route-header">
+                  <h3 id="stats-lessons-title" class="stats-section-title">Ruta de aprendizaje</h3>
+                  <p class="stats-route-legend">✓ dominada · ↻ repaso pendiente · número resaltado: abierta · borde punteado: bloqueada</p>
+                </div>
+                <div id="stats-lesson-grid" class="stats-route"></div>
+              </article>
+            </div>
+          </div>
+
+          <div id="progress-course" class="progress-tabpanel practice-route-panel" role="tabpanel" aria-labelledby="progress-tab-course" hidden>
+            <div class="progress-course-header">
+              <div>
+                <h3 id="course-title" class="stats-section-title">Cargando curso</h3>
+                <p id="course-summary" class="section-panel-summary">Ruta, criterios y estado de practica.</p>
+              </div>
+              <p class="course-progress-pill"><span id="course-progress">0%</span> <span>de avance</span></p>
+            </div>
+
+            <!-- Landscape master-detail (ADR-028): lessons left, current lesson detail right; each pane scrolls. -->
+            <div class="practice-route-body">
+              <section class="route-card route-lessons-pane" aria-label="Selector de practicas del curso">
+                <div id="lesson-list" aria-label="Selector de practicas del curso"></div>
+              </section>
+
+              <div class="route-detail-pane" role="region" aria-label="Detalle de la leccion actual" tabindex="0">
+                <section class="route-card">
+                  <h3 class="card-heading">Evaluacion</h3>
+                  <div id="criteria-list" class="criteria-list"></div>
+                </section>
+
+                <section class="route-card">
+                  <h3 class="card-heading">Ultimo resultado</h3>
+                  <p id="last-session" class="card-body">Tu primer resultado aparecera aqui.</p>
+                </section>
+
+                <section class="route-card">
+                  <h3 class="card-heading">Como desbloqueas el avance</h3>
+                  <ul class="route-rules">
+                    <li><span class="route-rule-value">95%</span><span>precision minima.</span></li>
+                    <li><span class="route-rule-value">Tiempo</span><span>completar dentro del tiempo maximo objetivo de la practica.</span></li>
+                    <li><span class="route-rule-value">5%</span><span>errores maximos permitidos.</span></li>
+                    <li><span class="route-rule-value">PPM</span><span>segun dificultad de la leccion.</span></li>
+                  </ul>
+                </section>
+
+                <section class="route-card">
+                  <h3 class="card-heading">Como funciona</h3>
+                  <ol class="route-howto">
+                    <li><strong>Empezar entrenamiento:</strong> enfoca el area de practica, reinicia el temporizador y bloquea cambios de leccion.</li>
+                    <li><strong>Finalizar intento:</strong> guarda metricas, evalua precision, PPM, errores y tiempo maximo objetivo.</li>
+                    <li><strong>Repetir:</strong> borra el intento actual o prepara una nueva repeticion sin cambiar el progreso aprobado.</li>
+                    <li><strong>Siguiente leccion:</strong> aparece habilitado solo cuando la proxima leccion fue desbloqueada.</li>
+                    <li><strong>Atajos:</strong> usa Alt+K en Windows/Linux o ⌘+K en macOS para iniciar, Esc para finalizar, Alt+H/⌘+H para avanzar y Enter/⏎ para cerrar mensajes emergentes.</li>
+                  </ol>
+                </section>
+              </div>
+            </div>
           </div>
         </section>
       </main>
       </div>
     </div>
-
+
   </body>
 </html>
