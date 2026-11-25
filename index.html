@@ -10,16 +10,16 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="apple-mobile-web-app-title" content="KeyboardPractice" />
-    <meta name="description" content="Practica mecanografia en un teclado Kinesis Advantage 360 configurado en Espanol Latinoamericano." />
+    <meta name="description" content="Practica mecanografía en un teclado Kinesis Advantage 360 configurado en español." />
     <meta name="theme-color" content="#f2f2f7" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
-    <title>Español | Latinoamérica</title>
+    <title>KeyboardPractice | Español</title>
     <script src="./theme-preboot.js"></script>
     <link rel="stylesheet" href="./critical.css" />
-    <script type="module" crossorigin src="./app.BB1B0JUA.js"></script>
-    <link rel="stylesheet" crossorigin href="./app.BOnFZvQe.css">
+    <script type="module" crossorigin src="./app.DZ_RwZ16.js"></script>
+    <link rel="stylesheet" crossorigin href="./app.b1mjRTFi.css">
   </head>
 <body class="min-h-screen bg-canvas text-label transition-colors">
     <!-- Touch devices in portrait see only this screen (ADR-028, landscape-first); critical.css shows it. -->
@@ -47,7 +47,7 @@
         <div class="welcome-copy">
           <p class="welcome-eyebrow">KeyboardPractice <span class="app-version" data-app-version></span></p>
           <h1 id="welcome-title" class="welcome-title">Entrena mecanografia en tu Kinesis Advantage 360.</h1>
-          <p id="welcome-description" class="welcome-description">Practica el teclado en espanol latino con una experiencia local, progresiva y preparada para funcionar sin conexion.</p>
+          <p id="welcome-description" class="welcome-description">Practica el teclado en español con una experiencia local, progresiva y preparada para funcionar sin conexion.</p>
 
           <ul class="welcome-feature-list" aria-label="Resumen de beneficios">
             <li><span aria-hidden="true">✓</span><span>Tu progreso permanece cifrado en este navegador.</span></li>
@@ -99,6 +99,8 @@
           </span>
         </p>
         <nav id="sidebar-nav" class="sidebar-nav" aria-label="Navegación principal"></nav>
+        <!-- Bottom of the sidebar (from 1024px): Perfil, Cerrar sesión, Depuración (debug build only). -->
+        <div id="sidebar-footer" class="sidebar-footer" role="group" aria-label="Cuenta local"></div>
       </aside>
 
       <div class="app-content">
@@ -147,11 +149,11 @@
             <article class="action-card side-card">
               <h3 class="card-heading">Acciones</h3>
               <div class="primary-action-stack" aria-label="Controles de practica con atajos de teclado">
-                <button id="start-button" class="control-button control-button-primary" type="button" aria-label="Empezar entrenamiento" data-tooltip="Empezar entrenamiento" title="Empezar entrenamiento"><span id="primary-action-icon" class="control-icon" aria-hidden="true">▶</span><span id="primary-action-label" class="control-action-label">Empezar entrenamiento</span><span id="primary-action-shortcut" class="control-shortcut">Alt+K</span></button>
+                <button id="start-button" class="control-button control-button-primary" type="button" aria-label="Iniciar práctica, atajo Ctrl+Enter" data-tooltip="Iniciar práctica" title="Iniciar práctica · Ctrl+Enter"><span id="primary-action-icon" class="control-icon" aria-hidden="true">▶</span><span id="primary-action-label" class="control-action-label">Iniciar</span><span id="primary-action-shortcut" class="control-shortcut">Ctrl+Enter</span></button>
                 <button id="finish-button" class="hidden" type="button" aria-hidden="true" disabled></button>
                 <button id="reset-button" class="hidden" type="button" aria-hidden="true" disabled></button>
-                <button id="prev-button" class="control-button" type="button" aria-label="Reto anterior, atajo Alt+F" data-tooltip="Reto anterior" title="Reto anterior" disabled><span class="control-icon" aria-hidden="true">⏮</span><span class="control-action-label">Reto anterior</span><span class="control-shortcut">Alt+F</span></button>
-                <button id="next-button" class="control-button" type="button" aria-label="Siguiente reto, atajo Alt+H" data-tooltip="Siguiente reto" title="Siguiente reto · Alt+H" disabled><span class="control-icon" aria-hidden="true">⏭</span><span class="control-action-label">Siguiente reto</span><span class="control-shortcut">Alt+H</span></button>
+                <button id="prev-button" class="control-button control-button-nav" type="button" aria-label="Reto anterior, atajo Alt+F" data-tooltip="Reto anterior" title="Reto anterior · Alt+F" disabled><span class="control-icon" aria-hidden="true">⏮</span><span class="control-action-label">Anterior</span><span class="control-shortcut">Alt+F</span></button>
+                <button id="next-button" class="control-button control-button-nav" type="button" aria-label="Siguiente reto, atajo Alt+H" data-tooltip="Siguiente reto" title="Siguiente reto · Alt+H" disabled><span class="control-icon" aria-hidden="true">⏭</span><span class="control-action-label">Siguiente</span><span class="control-shortcut">Alt+H</span></button>
               </div>
             </article>
 
@@ -182,7 +184,7 @@
                   </div>
                   <div id="line-combo-feedback" class="line-combo-feedback" role="status" aria-live="polite" aria-atomic="true" hidden></div>
                 </div>
-                <p id="exercise-target-instructions" class="sr-only">Area de practica. Pulsa Empezar entrenamiento y escribe el texto mostrado. Enter confirma lineas no finales; Tab sale del area.</p>
+                <p id="exercise-target-instructions" class="sr-only">Area de practica. Pulsa Iniciar (Ctrl+Enter) y escribe el texto mostrado. Enter confirma lineas no finales; Tab sale del area.</p>
                 <div id="exercise-target" class="target-text" role="region" tabindex="0" aria-label="Texto objetivo de practica. Escribe las teclas indicadas." aria-describedby="exercise-target-instructions feedback metric-progress"></div>
               </div>
 
@@ -192,7 +194,7 @@
                   <h3 class="card-heading">Teclado KA360</h3>
                   <p id="active-key-label" class="active-key-label">Sin tecla</p>
                 </div>
-                <div class="ka-demo-container" aria-label="Teclado Kinesis Advantage 360 en Espanol Latinoamericano">
+                <div class="ka-demo-container" aria-label="Teclado Kinesis Advantage 360 en español">
                   <div class="ka-keyboard-wrap">
                     <div id="keyboard-visual" class="ka-keyboard">
                       <div class="ka-half left">
@@ -415,11 +417,11 @@
                 <section class="route-card">
                   <h3 class="card-heading">Como funciona</h3>
                   <ol class="route-howto">
-                    <li><strong>Empezar entrenamiento:</strong> enfoca el area de practica, reinicia el temporizador y bloquea cambios de leccion.</li>
-                    <li><strong>Finalizar intento:</strong> guarda metricas, evalua precision, PPM, errores y tiempo maximo objetivo.</li>
+                    <li><strong>Iniciar:</strong> enfoca el area de practica, reinicia el temporizador y bloquea cambios de leccion.</li>
+                    <li><strong>Detener:</strong> guarda metricas, evalua precision, PPM, errores y tiempo maximo objetivo.</li>
                     <li><strong>Repetir:</strong> borra el intento actual o prepara una nueva repeticion sin cambiar el progreso aprobado.</li>
-                    <li><strong>Siguiente leccion:</strong> aparece habilitado solo cuando la proxima leccion fue desbloqueada.</li>
-                    <li><strong>Atajos:</strong> usa Alt+K en Windows/Linux o ⌘+K en macOS para iniciar, Esc para finalizar, Alt+H/⌘+H para avanzar y Enter/⏎ para cerrar mensajes emergentes.</li>
+                    <li><strong>Siguiente:</strong> aparece habilitado solo cuando la proxima leccion fue desbloqueada.</li>
+                    <li><strong>Atajos:</strong> Ctrl+Enter (⌘+Enter en macOS) para iniciar o repetir, Esc para detener, Alt+F para el reto anterior, Alt+H (⌘+H en macOS) para el siguiente y Enter para cerrar los mensajes de resultado.</li>
                   </ol>
                 </section>
               </div>

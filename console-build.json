@@ -1,0 +1,5 @@
+{
+  "debugConsole": true,
+  "decision": "ADR-032",
+  "note": "Production build with the debug console at the site root."
+}
