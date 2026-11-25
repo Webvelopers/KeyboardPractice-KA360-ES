@@ -18,14 +18,14 @@
     <title>KeyboardPractice | Español</title>
     <script src="./theme-preboot.js"></script>
     <link rel="stylesheet" href="./critical.css" />
-    <script type="module" crossorigin src="./app.DZ_RwZ16.js"></script>
-    <link rel="stylesheet" crossorigin href="./app.b1mjRTFi.css">
+    <script type="module" crossorigin src="./app.dUVIKc8x.js"></script>
+    <link rel="stylesheet" crossorigin href="./app.cXTVUAzI.css">
   </head>
 <body class="min-h-screen bg-canvas text-label transition-colors">
     <!-- Touch devices in portrait see only this screen (ADR-028, landscape-first); critical.css shows it. -->
     <section id="rotate-screen" class="rotate-screen" aria-labelledby="rotate-screen-title">
       <svg class="rotate-screen-icon" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><rect x="5" y="4" width="15" height="24" rx="2.5" fill="none" stroke="currentColor" stroke-width="2" opacity="0.4" /><rect x="14" y="24" width="29" height="18" rx="3" fill="none" stroke="currentColor" stroke-width="2.5" /><path d="M25 7a13 13 0 0 1 12 11M37 18l-4.5-1.5M37 18l1.5-4.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
-      <h1 id="rotate-screen-title" class="rotate-screen-title">Gira tu iPad</h1>
+      <h1 id="rotate-screen-title" class="rotate-screen-title">Gira tu dispositivo</h1>
       <p class="rotate-screen-copy">KeyboardPractice está diseñada para usarse en horizontal. Gira el dispositivo para continuar.</p>
     </section>
     <a id="app-skip-link" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:text-kinesis-graphite" href="#main-content" hidden>Saltar al contenido principal</a>
@@ -56,7 +56,7 @@
           </ul>
 
           <p id="welcome-security-note" class="welcome-security-note">Al iniciar, continuaremos con la frase de seguridad local para configurar o desbloquear tus datos. Esta pantalla no omite ese paso.</p>
-          <button id="welcome-start-button" class="welcome-start-button" type="button" aria-describedby="welcome-security-note">Iniciar</button>
+          <button id="welcome-start-button" class="welcome-start-button" type="button" aria-describedby="welcome-security-note" aria-keyshortcuts="Enter"><span>Iniciar</span><span class="shortcut-hint" aria-hidden="true">Enter</span></button>
           <p id="welcome-status" class="sr-only" role="status" aria-live="polite">Pantalla de bienvenida lista. El boton Iniciar abre el flujo protegido de KeyboardPractice.</p>
         </div>
       </section>
@@ -99,7 +99,7 @@
           </span>
         </p>
         <nav id="sidebar-nav" class="sidebar-nav" aria-label="Navegación principal"></nav>
-        <!-- Bottom of the sidebar (from 1024px): Perfil, Cerrar sesión, Depuración (debug build only). -->
+        <!-- Bottom of the sidebar (from 1024px): button with the user name that opens Perfil, Cerrar sesión, Depuración (debug build only). -->
         <div id="sidebar-footer" class="sidebar-footer" role="group" aria-label="Cuenta local"></div>
       </aside>
 

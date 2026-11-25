@@ -23,6 +23,7 @@
 .welcome-card{position:relative;z-index:2;display:flex;width:100%;max-width:56rem;flex-direction:column;align-items:center;gap:2rem;padding:3rem 1rem}
 .welcome-copy{display:flex;flex-direction:column;align-items:center;text-align:center;max-width:36rem}
 .welcome-start-button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;border-radius:12px;background-color:#3ccb9a;padding:.75rem 2.5rem;font-size:1.0625rem;font-weight:600;color:#0b1f18;border:none;cursor:pointer}
+.welcome-start-button .shortcut-hint{margin-left:.5rem;padding:.125rem .375rem;border-radius:.375rem;font:600 .75rem/1.3 ui-monospace,SFMono-Regular,Consolas,monospace;background:rgba(11,31,24,.12)}
 @media (min-width:1024px){.welcome-screen{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:3rem;padding:0 3rem}.welcome-visual-card{position:static;display:flex;align-items:center;justify-content:center;padding:0}.welcome-keyboard-image{height:auto;max-height:70dvh;border-radius:22px;opacity:1}.welcome-card{align-items:flex-start;padding:2rem 0}.welcome-copy{align-items:flex-start;text-align:left}}
 /* ADR-028 landscape-first: touch devices in portrait only see the rotate screen; fine pointers are never blocked */
 .rotate-screen{display:none}
